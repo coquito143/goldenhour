@@ -1,4 +1,6 @@
 # The Golden Hour
+![Image](./sun.gif)
+
 
 ## Project 2 - SEI
 
@@ -20,7 +22,7 @@ These are all factors which impact outdoor photography
 2. Have backgrounds change on the weather cards depending on the sky conditions
 3. Allow users to enter international city names in addition to US zip codes
 
-# Technologies: HTML, CSS, REACT, AJAX
+## Technologies: HTML, CSS, REACT, AJAX
 API used: https://api.weatherbit.io
 
 ## Wireframe
