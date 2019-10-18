@@ -20,9 +20,9 @@ These are all factors which impact outdoor photography
 
 1. Recognize popular zip codes/cities and to display landmarks and/or parks as ideas on where to take photos
 2. Have backgrounds change on the weather cards depending on the sky conditions
-3. Allow users to enter international city names in addition to US zip codes
+3. Automatically geo-locate user's location and pre-fill weather data so they don't have to enter the zip code
 
-## Technologies: HTML, CSS, REACT, AJAX
+## Technologies: REACT, HTML, CSS, AJAX
 API used: https://api.weatherbit.io
 
 ## Wireframe

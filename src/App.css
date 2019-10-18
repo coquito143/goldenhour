@@ -1,0 +1,31 @@
+.App {
+  text-align: center;
+  background: url('./ocean-sunrise.jpg') no-repeat center fixed;
+  height: 100vh;
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+  color: #3A3946;
+}
+
+header {
+  height: 12vh;
+}
+
+main {
+  height: 80vh;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  width: 10%;
+}
+
+footer {
+  height: 8vh;
+}
+
