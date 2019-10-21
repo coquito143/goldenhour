@@ -17,6 +17,35 @@ main {
   height: 80vh;
 }
 
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none; 
+}
+
+#forecast-div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#forecast-div h3 {
+  margin-top: 10vh;
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+.day-div {
+  width: 50%;
+  border: 1px solid black;
+  margin: 20px;
+  padding: 50px;
+  border-radius: 15px;
+  background-color: rgba(240, 248, 255, .3);
+}
+
 form {
   display: flex;
   flex-direction: column;
