@@ -5,7 +5,7 @@ export const getForecast = async (zipcode) => {
   const URL = `https://api.weatherbit.io/v2.0/forecast/daily?&postal_code=${zipcode}&country=US&units=I&days=6&key=9352b22c629c4910a59b6f750e7dcc55`
   // your axios call 
   const response = await axios.get(URL);
-  const sixDays = response.data.data;
+  let sixDays = response.data.data;
   return sixDays
 }
 
@@ -17,11 +17,14 @@ export const unixTimeConvert = (timestamp) => {
   var s = dt.getSeconds();
   if (s > 30) m++;
   if (hr > 12) {
-    const time = (hr - 12) + ':' + m + ' PM';
+    const time = (hr - 12) + ':' + m + ' PM EST';
     return time;
   }
+  else if (hr === 12) {
+    const time = hr + ':' + m + 'PM EST';
+  }
   else {
-    const time = hr + ':' + m + ' AM';
+    const time = hr + ':' + m + ' AM EST';
     return time;
   }
 

@@ -20,11 +20,18 @@ header {
 
 header h1 {
   margin-bottom: 0px;
+  margin-top: 10px;
 }
 
 header p {
   margin-top: 0px;
+  margin-bottom: 5px;
 }
+
+header img {
+  width: 40px;
+}
+
 main {
   height: 80vh;
 }
@@ -35,6 +42,12 @@ a {
 
 ul {
   list-style-type: none; 
+  padding-left: 2vw;
+  padding-bottom: 0;
+}
+
+li {
+  text-align: start;
 }
 
 .right {
@@ -58,7 +71,8 @@ ul {
 }
 
 .day-div {
-  width: 70%;
+  width: 165px;
+  height: 220px;
   border: 1px solid black;
   margin: 15px;
   padding: 10px;
@@ -66,6 +80,15 @@ ul {
   background-color: rgba(240, 248, 255, .3);
 }
 
+.weather-icon-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.weather-icon-div img {
+  width: 60px;
+}
 form {
   color: black;
   display: flex;
@@ -73,6 +96,20 @@ form {
   justify-content: center;
   margin-left: auto;
   width: 30%;
+}
+
+.day-detail-div {
+  width: 180px;
+  height: 180px;
+  border: 1px solid black;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: rgba(240, 248, 255, .3);
+}
+
+.day-detail-div ul {
+  padding-left: 10px;
 }
 
 footer {
@@ -116,6 +153,12 @@ footer {
   height: 100%;
   background: green;
   position: absolute;
+
+}
+
+.landscape .hill p {
+  color: black;
+  text-align: center;
 }
 .landscape .hill.foreground {
   bottom: 0px;

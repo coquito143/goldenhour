@@ -70,7 +70,13 @@ class App extends React.Component {
           />
         </main>
         <div class="landscape">
-          <div class="hill foreground"></div>
+          <div class="hill foreground">
+            {/* {this.state.zipcode && this.state.forecast.length &&
+              <DayDetail
+                forecast={this.state.forecast}
+                date={this.state.date}
+              />} */}
+          </div>
           <div class="hill background"> </div>
         </div>
         <Footer />
