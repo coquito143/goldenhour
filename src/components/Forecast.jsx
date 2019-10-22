@@ -5,9 +5,9 @@ function Forecast(props) {
   return (
 
     <div id="forecast-div">
-   
-        <h3>6 day forecast</h3>
-       
+
+      <h2>Six Day Forecast</h2>
+
       {props.forecast.map(day => (
         <Link to={`/${day.valid_date}`} key={day.valid_date}>
           <div class="day-div" id={day.valid_date}>
@@ -16,8 +16,7 @@ function Forecast(props) {
               <li>High: {day.high_temp}</li>
               <li>Low: {day.low_temp}</li>
               <li>Description: {day.weather.description}</li>
-              {/* <li>Sunset: {day.sunrise_ts}</li>
-              <li>Sunrise: {day.sunset_ts}</li> */}
+              <li>Cloud Cover %: {day.clouds}</li>
               <li>Visibility: {day.vis}</li>
               <li>Wind Speed: {day.wind_spd}</li>
               <li>Amount of Precipitation: {day.precip}</li>

@@ -2,10 +2,10 @@ import React from 'react'
 
 function Input(props) {
   return (
-    <div id="input-div">
-        <h2>Enter Zip Code</h2>
+    <div id="input-div" class="right">
+        
         <form onSubmit={props.handleSubmit}>
-        <input name="zipcode" placeholder="Zip Code"
+        <input name="zipcode" placeholder="Enter Zip Code"
           onChange={props.handleChange}
         />
           <input type="submit"/>

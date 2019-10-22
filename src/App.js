@@ -14,7 +14,8 @@ class App extends React.Component {
     super();
     this.state = {
       forecast: [],
-      zipcode: null
+      zipcode: null,
+      showHome: false
     }
   }
 
@@ -35,7 +36,8 @@ class App extends React.Component {
     if (isValidZip) {
       const forecast = await getForecast(this.state.zipcode);
       this.setState({
-        forecast
+        forecast,
+        showHome: true
       }
       )
     }
@@ -44,26 +46,37 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <Header />
+
+      <div class="App">
+        <div class="sun"></div>
+        <Header
+          showhome={this.state.showHome}
+        />
         <main>
-        {this.state.zipcode && this.state.forecast.length ?
-<Route exact path='/' render={() => 
+          {this.state.zipcode && this.state.forecast.length ?
+            <Route exact path='/' render={() =>
               <Forecast forecast={this.state.forecast} />} />
-              :
-<Route exact path='/' render={() =>
+            :
+            <Route exact path='/' render={() =>
               <Input
                 handleChange={this.handleChange}
                 handleSubmit={this.handleSubmit}
               />}
-          />
-		  }
+            />
+          }
           <Route path='/:day_id'
             render={(props) =>
               <DayDetail forecast={this.state.forecast} day_id={props.match.params.day_id} />}
           />
         </main>
+        <div class="landscape">
+          <div class="hill foreground"></div>
+          <div class="hill background"> </div>
+        </div>
         <Footer />
+
+
+
       </div>
     );
   }

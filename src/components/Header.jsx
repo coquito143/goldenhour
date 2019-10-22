@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-function Header() {
+function Header(props) {
   return (
     <header>
       <h1>the Golden Hour</h1>
-      <Link to='/'>
-        <h2>Home</h2>
-      </Link>
+      {props.showhome && 
+        <Link to='/'>
+          <p>Home</p>
+        </Link>}
     </header>
   )
 }

@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
   background: url('./ocean-sunrise.jpg') no-repeat center fixed;
   height: 100vh;
@@ -7,12 +7,24 @@
   display: flex;
   flex-direction: column;
   color: #3A3946;
-}
+} */
 
 header {
-  height: 12vh;
+  /* height: 12vh; */
+  text-align: right;
+  margin: 0;
+  padding: 10px 10px 0 0;
+  font-family: 'Lobster', cursive;
+  font-size: 1.5em;
 }
 
+header h1 {
+  margin-bottom: 0px;
+}
+
+header p {
+  margin-top: 0px;
+}
 main {
   height: 80vh;
 }
@@ -25,36 +37,155 @@ ul {
   list-style-type: none; 
 }
 
+.right {
+  position: absolute;
+  right: 0px;
+  width: 300px;
+  padding: 10px;
+}
+
 #forecast-div {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
-#forecast-div h3 {
-  margin-top: 10vh;
-  display: block;
+#forecast-div h2, h3 {
   width: 100%;
   margin: 0 auto;
+  text-align: center;
 }
+
 .day-div {
-  width: 50%;
+  width: 70%;
   border: 1px solid black;
-  margin: 20px;
-  padding: 50px;
+  margin: 15px;
+  padding: 10px;
   border-radius: 15px;
   background-color: rgba(240, 248, 255, .3);
 }
 
 form {
+  color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0 auto;
-  width: 10%;
+  margin-left: auto;
+  width: 30%;
 }
 
 footer {
-  height: 8vh;
+  /* height: 8vh; */
+  margin-right: auto;
 }
+
+.App {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #d4d4f7;
+  animation: sunset 4s ease-in-out 1.5s forwards 1, sunrise 4s ease-in-out 10s forwards 1;
+  font-family: 'Cabin', sans-serif;
+}
+.sun {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  background: yellow;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  animation: pm 8s ease-in-out forwards 1,
+  am 8s ease-in-out 8s forwards 1;
+}
+.landscape {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  overflow: hidden;
+}
+.landscape .hill {
+  content: "";
+  border-radius: 95% 95% 0 0;
+  width: 80%;
+  height: 100%;
+  background: green;
+  position: absolute;
+}
+.landscape .hill.foreground {
+  bottom: 0px;
+  left: -20px;
+  z-index: 100;
+}
+.landscape .hill.background {
+  background: #206020;
+  width: 70%;
+  height: 100%;
+  bottom: 0px;
+  right: -6px;
+  z-index: 50;
+}
+@keyframes pm {
+  0% {
+    top: 0;
+    left: 0;
+ }
+  100% {
+    top: 70%;
+    left: 70%;
+ }
+}
+@keyframes am {
+  0% {
+    top: 70%;
+    left: 70%;
+ }
+  100% {
+    top: 0;
+    left: 0;
+ }
+}
+@keyframes sunset {
+  75% {
+    background: gold;
+ }
+  80% {
+    background: #b8860b;
+    color: grey;
+ }
+  90% {
+    background: orchid4;
+    color: lightgray;
+ }
+  100% {
+    background: #08082b;
+    color: white;
+ }
+}
+@keyframes sunrise {
+  0% {
+    background: #08082b;
+    color: white;
+ }
+  20% {
+    background: orchid4;
+    color: lightgray
+ }
+  60% {
+    background: #b8860b;
+    color: grey;
+ }
+  70% {
+    background: gold;
+ }
+  100% {
+    background: #d4d4f7;
+ }
+}
+
 
