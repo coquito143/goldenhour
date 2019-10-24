@@ -1,5 +1,6 @@
 import React from 'react';
 import { unixTimeConvert, round } from '../services/api-helper'
+import ReactTooltip from 'react-tooltip'
 
 class DayDetail extends React.Component {
   constructor(props) {
