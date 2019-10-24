@@ -6,25 +6,38 @@ export const getForecast = async (zipcode) => {
   // your axios call 
   const response = await axios.get(URL);
   let sixDays = response.data.data;
-  return sixDays
+  return sixDays;
+}
+
+export const getCity = async (zipcode) => {
+  const URL = `http://ZiptasticAPI.com/${zipcode}`;
+  const response = await axios.get(URL);
+  let city = response.data.city + `, ` + response.data.state;
+  return city;
 }
 
 export const unixTimeConvert = (timestamp) => {
 
   const dt = new Date(timestamp * 1000);
+
   let hr = dt.getHours();
   let m = dt.getMinutes();
+  let mstring = m.toString();
+  const mlength = mstring.length;
+  if (mlength === 1) { mstring = `0` + mstring };
   var s = dt.getSeconds();
+  
   if (s > 30) m++;
   if (hr > 12) {
-    const time = (hr - 12) + ':' + m + ' PM EST';
+    const time = (hr - 13) + ':' + mstring + ' - ' + (hr-12) + ':' + mstring + ' PM EST' ;
     return time;
   }
   else if (hr === 12) {
-    const time = hr + ':' + m + 'PM EST';
+    const time =  '11:' + mstring + 'AM - 12:' + mstring + ' PM EST';
   }
   else {
-    const time = hr + ':' + m + ' AM EST';
+    const time = hr + ':' + mstring + ' - ' + (hr + 1) + ':'
+    + mstring + ' AM EST';
     return time;
   }
 

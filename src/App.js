@@ -6,7 +6,8 @@ import Footer from './components/Footer'
 import Forecast from './components/Forecast'
 import Input from './components/Input'
 import DayDetail from './components/DayDetail'
-import { getForecast } from './services/api-helper'
+import { getForecast, getCity } from './services/api-helper'
+import camera from '../src/img/camera.png'
 
 
 class App extends React.Component {
@@ -15,17 +16,28 @@ class App extends React.Component {
     this.state = {
       forecast: [],
       zipcode: null,
-      showHome: false
+      showHome: false,
+      date: null,
+      city: ""
     }
   }
 
   handleChange = (event) => {
-    let name = event.target.name // tracks which input is being used
+    // let name = event.target.name // tracks which input is being used
     let value = event.target.value // tracks the value being entered
     this.setState({
       zipcode: value
     }
     )
+  }
+
+  handleClick = () => {
+    const showHome = !this.state.showHome;
+    const showInput = !this.state.showInput;
+    this.setState({
+      showHome,
+      showInput
+    })
   }
 
   handleSubmit = async (event) => {
@@ -35,8 +47,11 @@ class App extends React.Component {
     let isValidZip = /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(this.state.zipcode);
     if (isValidZip) {
       const forecast = await getForecast(this.state.zipcode);
+      const city = await getCity(this.state.zipcode);
+
       this.setState({
         forecast,
+        city,
         showHome: true
       }
       )
@@ -49,41 +64,57 @@ class App extends React.Component {
 
       <div class="App">
         <div class="sun"></div>
-        <Header
-          showhome={this.state.showHome}
-        />
+        <header>
+          <h1><img src={camera} alt="camera icon" />  the Golden Hour</h1>
+          <p>for creating magical photos</p>
+          {this.state.showHome ? <p id="newzip" onClick={this.handleClick}>Enter New Zip Code</p> :
+
+            <Input
+              handleChange={this.handleChange}
+              handleSubmit={this.handleSubmit}
+            />}
+        </header>
         <main>
-          {this.state.zipcode && this.state.forecast.length ?
-            <Route exact path='/' render={() =>
-              <Forecast forecast={this.state.forecast} />} />
-            :
-            <Route exact path='/' render={() =>
-              <Input
-                handleChange={this.handleChange}
-                handleSubmit={this.handleSubmit}
-              />}
-            />
+          {this.state.zipcode && !!this.state.forecast.length &&
+            <Route path='/' render={() =>
+              <Forecast city={this.state.city} forecast={this.state.forecast} />} />
           }
+
+
+
           <Route path='/:day_id'
             render={(props) =>
               <DayDetail forecast={this.state.forecast} day_id={props.match.params.day_id} />}
           />
         </main>
-        <div class="landscape">
-          <div class="hill foreground">
-            {/* {this.state.zipcode && this.state.forecast.length &&
-              <DayDetail
-                forecast={this.state.forecast}
-                date={this.state.date}
-              />} */}
+        {this.state.forecast.length ?
+          < div class="landscape hidden">
+            <div class="hill foreground hidden">
+              {this.state.zipcode && this.state.forecast.length &&
+                <DayDetail
+                  forecast={this.state.forecast}
+                  date={this.state.date}
+                />}
+            </div>
+            <div class="hill background hidden"> </div>
           </div>
-          <div class="hill background"> </div>
-        </div>
+          :
+          < div class="landscape">
+            <div class="hill foreground">
+              {this.state.zipcode && this.state.forecast.length &&
+                <DayDetail
+                  forecast={this.state.forecast}
+                  date={this.state.date}
+                />}
+            </div>
+            <div class="hill background"> </div>
+          </div>
+        }
         <Footer />
 
 
 
-      </div>
+      </div >
     );
   }
 }

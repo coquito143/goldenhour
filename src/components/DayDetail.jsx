@@ -9,8 +9,9 @@ class DayDetail extends React.Component {
       high: null,
       low: null,
       description: "",
-      sunrise: null,
-      sunset: null,
+      golden_hour1: "",
+      golden_hour2: "",
+      blue_hour: "",
       visibility: null,
       wind_speed: null,
       precip_amt: null,
@@ -18,15 +19,15 @@ class DayDetail extends React.Component {
     }
   }
 
-  componentDidMount = async () => {
+  getDayDetails = async () => {
     let forecastArr = this.props.forecast;
     const newArr = forecastArr.filter((dayObj) => {
       return dayObj.valid_date === this.props.day_id;
     });
 
     if (newArr.length > 0) {
-      let sunrise = unixTimeConvert(newArr[0].sunrise_ts);
-      let sunset = unixTimeConvert(newArr[0].sunset_ts);
+      let golden_hour1 = unixTimeConvert(newArr[0].sunrise_ts);
+      let golden_hour2 = unixTimeConvert(newArr[0].sunset_ts);
       let rounded = round(newArr[0].precip, 1);
       rounded = rounded + ` inches`;
       // const precip_percent = newArr[0].pop + `% chance precipitation`
@@ -34,20 +35,30 @@ class DayDetail extends React.Component {
       const visibility = newArr[0].vis + ` miles`;
 
       this.setState({
+        date: newArr[0].valid_date,
         high: newArr[0].high_temp,
         low: newArr[0].low_temp,
         description: newArr[0].weather.description,
-        sunrise,
-        sunset,
+        golden_hour1,
+        golden_hour2,
         visibility,
         wind_speed,
         precip_amt: rounded,
         precip_percent: newArr[0].pop
       })
     }
-
   }
 
+
+  componentDidMount = () => {
+    this.getDayDetails()
+  }
+
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.day_id !== this.props.day_id) {
+      this.getDayDetails()
+    }
+  }
 
   render() {
     if (this.state.high) {
@@ -58,18 +69,19 @@ class DayDetail extends React.Component {
             {/* <li>High: {this.state.high}</li>
               <li>Low: {this.state.low}</li>
               <li>Description: {this.state.description}</li> */}
-            <li>Sunset: {this.state.sunrise}</li>
-            <li>Sunrise: {this.state.sunset}</li>
+            <li>Morning Golden Hour: {this.state.golden_hour1}</li>
+            <li>Afternoon Golden Hour: {this.state.golden_hour2}</li>
             <li>Visibility: {this.state.visibility}</li>
             <li>Wind Speed: {this.state.wind_speed}</li>
             {!!this.state.precip_amt && !!this.state.precip_percent &&
-              <li>Amount of Precipitation: {this.state.precip_amt}</li> &&
-              <li>Prob of Precipitation: {this.state.precip_percent}</li>}
+              <li>Prob of Precipitation: {this.state.precip_percent} %</li>}
+            {!!this.state.precip_amt && !!this.state.precip_percent &&
+              <li>Precipitation Amount: {this.state.precip_amt}</li>}
           </ul>
         </div >
       )
     }
-    else return (<div class="day-div"></div>)
+    else return (<div></div>)
 
 
   }
