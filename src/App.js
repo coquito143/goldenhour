@@ -48,7 +48,7 @@ class App extends React.Component {
     if (isValidZip) {
       const forecast = await getForecast(this.state.zipcode);
       const city = await getCity(this.state.zipcode);
-
+      debugger;
       this.setState({
         forecast,
         city,
