@@ -211,17 +211,21 @@ footer h3 {
  }
 }
 @keyframes sunset {
-  75% {
+  60% {
     background: gold;
  }
-  80% {
+  70% {
     background: #b8860b;
     color: grey;
  }
-  90% {
-    background: orchid4;
+  80% {
+    background: #4848FF;
     color: lightgray;
  }
+ 90% {
+  background: #1D36F5;
+  color: white;
+}
   100% {
     background: #08082b;
     color: white;
@@ -232,8 +236,12 @@ footer h3 {
     background: #08082b;
     color: white;
  }
-  20% {
-    background: orchid4;
+ 20% {
+  background: #1D36F5;
+  color: white;
+}
+  30% {
+    background: #4848FF;
     color: lightgray
  }
   60% {
