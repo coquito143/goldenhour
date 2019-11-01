@@ -70,8 +70,11 @@ class DayDetail extends React.Component {
             {/* <li>High: {this.state.high}</li>
               <li>Low: {this.state.low}</li>
               <li>Description: {this.state.description}</li> */}
-            <li>Morning Golden Hour: {this.state.golden_hour1}</li>
+            <li>
+            <ReactTooltip place="top" delayHide={1000} type="dark" effect="float"> <span>The golden hour in photography is the first or last hour of sunlight in a day that photographers often aim to shoot in, since the sun’s position produces a soft and warm light with longer shadows.</span></ReactTooltip>
+              Morning Golden Hour: {this.state.golden_hour1} <i class="material-icons" data-tip="React-tooltip">info</i></li>
             <li>Afternoon Golden Hour: {this.state.golden_hour2}</li>
+            
             <li>Visibility: {this.state.visibility}</li>
             <li>Wind Speed: {this.state.wind_speed}</li>
             {!!this.state.precip_amt && !!this.state.precip_percent &&

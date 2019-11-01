@@ -6,7 +6,6 @@ export const getForecast = async (zipcode) => {
   // your axios call 
   const response = await axios.get(URL);
   let sixDays = response.data.data;
-  debugger;
   return sixDays;
 }
 

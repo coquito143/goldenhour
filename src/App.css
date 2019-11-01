@@ -265,11 +265,6 @@ footer h3 {
      font-size: 12px;
    }
 
-   .App {
-    /* background-attachment: fixed;
-    background-repeat: no-repeat;
-    position: static; */
-   }
 
    body, html {
     background-attachment: fixed;
@@ -325,6 +320,10 @@ footer h3 {
      margin-block-start: 0;
   }
 
+  .day-detail-div span {
+    width: 20vw;
+  }
+
    .hidden {
      display: none;
    }
@@ -335,6 +334,9 @@ footer h3 {
     margin-bottom: 40px;
     overflow-y: auto;
    }
-
+   .landscape .hill {
+    content: "";
+    border-radius: 35% 35% 0 0;
 
   }
+}
