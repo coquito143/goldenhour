@@ -116,7 +116,7 @@ form {
 }
 
 .day-detail-div {
-  width: 460px;
+  width: 465px;
   height: 200px;
   border: 1px solid black;
   margin: 0 auto;
@@ -328,7 +328,7 @@ footer h3 {
     margin-block-end: 0;
   }
    .day-detail-div {
-    width: 310px;
+    width: 315px;
     height: 120px;
     font-size: 1.3em;
    }
@@ -374,7 +374,7 @@ and (max-width: 1280px){
   }
 
   .day-detail-div {
-    width: 335px;
+    width: 340px;
   }
 
   #forecast-div {
